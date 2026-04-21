@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeSpace - Mental Wellness for Students</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4CAF50',
+            secondary: '#E8F5E9',
+            accent: '#FFB74D',
+            foreground: '#1a1a1a',
+            muted: {
+              DEFAULT: '#f5f5f5',
+              foreground: '#717182'
+            },
+            border: 'rgba(0, 0, 0, 0.1)'
+          },
+          fontFamily: {
+            sans: ['Poppins', 'Inter', 'system-ui', 'sans-serif']
+          },
+          borderRadius: {
+            DEFAULT: '12px',
+            'lg': '12px',
+            'xl': '16px',
+            '2xl': '20px'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+      color: #1a1a1a;
+      background-color: #ffffff;
+    }
+    .shadow-soft {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Navigation -->
+  <nav class="border-b border-border bg-white sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"></path>
+            <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"></path>
+            <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path>
+            <path d="M17.599 6.5a3 3 0 0 0 .399-1.375"></path>
+            <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"></path>
+            <path d="M3.477 10.896a4 4 0 0 1 .585-.396"></path>
+            <path d="M19.938 10.5a4 4 0 0 1 .585.396"></path>
+            <path d="M6 18a4 4 0 0 1-1.967-.516"></path>
+            <path d="M19.967 17.484A4 4 0 0 1 18 18"></path>
+          </svg>
+        </div>
+        <span class="text-xl font-semibold">SafeSpace</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="login.html" class="px-4 py-2 text-primary hover:text-primary/80 transition-colors">Log In</a>
+        <a href="signup.html" class="px-6 py-2 bg-primary text-white rounded-xl hover:bg-primary/90 transition-colors shadow-soft">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="container mx-auto px-6 py-20">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <h1 class="text-4xl md:text-5xl font-semibold leading-tight">
+          Welcome to SafeSpace
+        </h1>
+        <p class="text-lg text-muted-foreground leading-relaxed">
+          Your personal mental wellness companion. Track your mood, take self-assessments, 
+          access helpful resources, and get support whenever you need it.
+        </p>
+        <div class="flex gap-4">
+          <a href="signup.html" class="px-8 py-3 bg-primary text-white rounded-xl hover:bg-primary/90 transition-colors shadow-soft">
+            Start Your Journey
+          </a>
+          <a href="#features" class="px-8 py-3 border border-border rounded-xl hover:bg-secondary transition-colors">
+            Learn More
+          </a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="bg-secondary rounded-2xl p-8 shadow-soft">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=600&fit=crop" alt="Mental wellness" class="rounded-xl w-full">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="bg-secondary py-20">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-semibold mb-4">Why Choose SafeSpace?</h2>
+        <p class="text-lg text-muted-foreground">
+          Comprehensive tools designed specifically for student mental wellness
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Mood Tracking -->
+        <div class="bg-white rounded-2xl p-8 shadow-soft">
+          <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+              <line x1="9" x2="9.01" y1="9" y2="9"></line>
+              <line x1="15" x2="15.01" y1="9" y2="9"></line>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Mood Tracking</h3>
+          <p class="text-muted-foreground">
+            Monitor your emotional well-being with daily mood check-ins and visualize patterns over time.
+          </p>
+        </div>
+
+        <!-- Self-Assessment -->
+        <div class="bg-white rounded-2xl p-8 shadow-soft">
+          <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11H3v2h6m0 0l-4-4m4 4l-4 4m6 0h6v-2h-6m0 0l4-4m-4 4l4 4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Self-Assessment</h3>
+          <p class="text-muted-foreground">
+            Take scientifically-backed assessments to understand your mental health better.
+          </p>
+        </div>
+
+        <!-- Resources -->
+        <div class="bg-white rounded-2xl p-8 shadow-soft">
+          <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Wellness Resources</h3>
+          <p class="text-muted-foreground">
+            Access a library of articles, videos, and exercises for better mental health.
+          </p>
+        </div>
+
+        <!-- AI Chat -->
+        <div class="bg-white rounded-2xl p-8 shadow-soft">
+          <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 8V4H8"></path>
+              <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+              <path d="M2 14h2"></path>
+              <path d="M20 14h2"></path>
+              <path d="M15 13v2"></path>
+              <path d="M9 13v2"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">AI Chat Support</h3>
+          <p class="text-muted-foreground">
+            Get instant support and guidance from our AI assistant, available 24/7.
+          </p>
+        </div>
+
+        <!-- Privacy -->
+        <div class="bg-white rounded-2xl p-8 shadow-soft">
+          <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Private & Secure</h3>
+          <p class="text-muted-foreground">
+            Your data is encrypted and private. We take your security seriously.
+          </p>
+        </div>
+
+        <!-- Community -->
+        <div class="bg-white rounded-2xl p-8 shadow-soft">
+          <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Student Community</h3>
+          <p class="text-muted-foreground">
+            Connect with peers who understand your journey through student life.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="container mx-auto px-6 py-20">
+    <div class="bg-primary rounded-2xl p-12 text-center text-white shadow-soft">
+      <h2 class="text-3xl font-semibold mb-4">Ready to Prioritize Your Mental Health?</h2>
+      <p class="text-lg mb-8 opacity-90">
+        Join thousands of students taking control of their mental wellness
+      </p>
+      <a href="signup.html" class="inline-block px-8 py-3 bg-white text-primary rounded-xl hover:bg-gray-100 transition-colors font-semibold">
+        Get Started Free
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="container mx-auto px-6 py-8 text-center text-muted-foreground border-t border-border">
+    <p>© 2026 SafeSpace. Your mental wellness matters.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

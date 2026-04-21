@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Support - SafeSpace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4CAF50',
+            secondary: '#E8F5E9',
+            accent: '#FFB74D',
+            foreground: '#1a1a1a',
+            muted: {
+              DEFAULT: '#f5f5f5',
+              foreground: '#717182'
+            },
+            border: 'rgba(0, 0, 0, 0.1)',
+            'input-background': '#f3f3f5'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+    }
+    .shadow-soft {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .shadow-lg {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    #messages {
+      height: 500px;
+      overflow-y: auto;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .typing-dot {
+      animation: bounce 1.4s infinite;
+    }
+    .typing-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .typing-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+  </style>
+</head>
+<body class="bg-secondary min-h-screen">
+  <div class="p-8 max-w-4xl mx-auto space-y-6">
+    <!-- Back Button -->
+    <a href="dashboard.html" class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m12 19-7-7 7-7"></path>
+        <path d="M19 12H5"></path>
+      </svg>
+      Back to Dashboard
+    </a>
+
+    <!-- Header -->
+    <div class="space-y-2">
+      <h1 class="text-3xl font-semibold">Chat Support</h1>
+      <p class="text-muted-foreground text-lg">Connect with our AI support assistant for guidance and resources</p>
+    </div>
+
+    <!-- Chat Card -->
+    <div class="bg-white rounded-2xl shadow-lg border border-border overflow-hidden">
+      <!-- Chat Header -->
+      <div class="p-6 border-b border-border flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 8V4H8"></path>
+              <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+              <path d="M2 14h2"></path>
+              <path d="M20 14h2"></path>
+              <path d="M15 13v2"></path>
+              <path d="M9 13v2"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold">SafeSpace Assistant</p>
+            <p class="text-xs text-muted-foreground">Always here to help</p>
+          </div>
+        </div>
+        <span class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">
+          <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+          Online
+        </span>
+      </div>
+
+      <!-- Messages Area -->
+      <div id="messages" class="p-6 space-y-4">
+        <!-- AI Initial Message -->
+        <div class="flex gap-3">
+          <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 8V4H8"></path>
+              <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+              <path d="M2 14h2"></path>
+              <path d="M20 14h2"></path>
+              <path d="M15 13v2"></path>
+              <path d="M9 13v2"></path>
+            </svg>
+          </div>
+          <div class="max-w-[70%] bg-secondary rounded-2xl rounded-tl-sm px-4 py-3">
+            <p class="text-sm">Hello! I'm here to support you. How are you feeling today?</p>
+            <p class="text-xs text-muted-foreground mt-1">Just now</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typing Indicator (hidden by default) -->
+      <div id="typingIndicator" class="px-6 pb-2 hidden">
+        <div class="flex gap-3">
+          <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 8V4H8"></path>
+              <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+            </svg>
+          </div>
+          <div class="bg-secondary rounded-2xl rounded-tl-sm px-4 py-3">
+            <div class="flex gap-1">
+              <span class="w-2 h-2 bg-muted-foreground rounded-full typing-dot"></span>
+              <span class="w-2 h-2 bg-muted-foreground rounded-full typing-dot"></span>
+              <span class="w-2 h-2 bg-muted-foreground rounded-full typing-dot"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="border-t border-border p-4">
+        <form onsubmit="sendMessage(event)" class="flex gap-2">
+          <input 
+            type="text" 
+            id="messageInput" 
+            placeholder="Type your message..." 
+            class="flex-1 px-4 py-3 bg-input-background border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+          <button 
+            type="submit" 
+            class="bg-primary hover:bg-primary/90 text-white rounded-xl px-6 py-3 font-semibold transition-colors shadow-soft"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m22 2-7 20-4-9-9-4Z"></path>
+              <path d="M22 2 11 13"></path>
+            </svg>
+          </button>
+        </form>
+        <p class="text-xs text-muted-foreground mt-2 text-center">
+          This is an AI assistant. For urgent matters, please contact a professional counselor.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const aiResponses = [
+      "I understand you're feeling that way. Can you tell me more about what's been happening?",
+      "It's completely normal to feel overwhelmed sometimes. Let's take this one step at a time.",
+      "That sounds challenging. Remember, you're not alone in this. Have you tried any relaxation techniques?",
+      "I'm here to listen. Your feelings are valid, and it's good that you're reaching out.",
+      "Consider taking a short break. Sometimes a few minutes of deep breathing can help reset your mind.",
+      "It might help to talk to a counselor or trusted friend about this. Would you like some resources?",
+    ];
+
+    function sendMessage(event) {
+      event.preventDefault();
+      
+      const input = document.getElementById('messageInput');
+      const messageText = input.value.trim();
+      
+      if (!messageText) return;
+      
+      // Add user message
+      addMessage(messageText, 'user');
+      
+      // Clear input
+      input.value = '';
+      
+      // Show typing indicator
+      showTyping();
+      
+      // Simulate AI response after delay
+      setTimeout(() => {
+        hideTyping();
+        const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+        addMessage(randomResponse, 'ai');
+      }, 1500);
+    }
+
+    function addMessage(text, sender) {
+      const messagesContainer = document.getElementById('messages');
+      const messageDiv = document.createElement('div');
+      
+      if (sender === 'user') {
+        messageDiv.className = 'flex gap-3 flex-row-reverse';
+        messageDiv.innerHTML = `
+          <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="max-w-[70%] bg-primary text-white rounded-2xl rounded-tr-sm px-4 py-3">
+            <p class="text-sm">${text}</p>
+            <p class="text-xs text-white/70 mt-1">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+          </div>
+        `;
+      } else {
+        messageDiv.className = 'flex gap-3';
+        messageDiv.innerHTML = `
+          <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 8V4H8"></path>
+              <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+            </svg>
+          </div>
+          <div class="max-w-[70%] bg-secondary rounded-2xl rounded-tl-sm px-4 py-3">
+            <p class="text-sm">${text}</p>
+            <p class="text-xs text-muted-foreground mt-1">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+          </div>
+        `;
+      }
+      
+      messagesContainer.appendChild(messageDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function showTyping() {
+      document.getElementById('typingIndicator').classList.remove('hidden');
+      const messagesContainer = document.getElementById('messages');
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function hideTyping() {
+      document.getElementById('typingIndicator').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
